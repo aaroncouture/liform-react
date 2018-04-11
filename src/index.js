@@ -25,14 +25,16 @@ const BaseForm = props => {
 const Liform = props => {
   props.schema.showLabel = false;
   const schema = compileSchema(props.schema);
-  const formName = props.formKey || props.schema.title || "formhahaha";
+  const formName = props.formKey || props.schema.title || "formhahahah";
+  const validator = props.syncValidation || buildSyncValidation(schema, props.ajv);
   const FinalForm = reduxForm({
     form: formName,
-    validate: props.syncValidation || buildSyncValidation(schema, props.ajv),
+    validate: validator,
     initialValues: props.initialValues,
     context: { ...props.context, formName },
-    ...props.reduxFormOptions,
+    ...props.reduxFormOptions
   })(props.baseForm || BaseForm);
+
   return (
     <FinalForm
       renderFields={renderField.bind(this)}
@@ -61,5 +63,7 @@ export {
   renderField,
   processSubmitErrors,
   DefaultTheme,
-  setError
+  setError,
+  buildSyncValidation,
+  compileSchema,
 };

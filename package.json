@@ -5,7 +5,7 @@
   "main": "./lib/index.js",
   "scripts": {
     "build": "npm run build:lib",
-    "build:lib": "babel src --out-dir lib",
+    "build:lib": "webpack && babel src --out-dir lib --watch",
     "lint": "eslint src",
     "test": "jest",
     "test:cov": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text npm test"

@@ -13,6 +13,7 @@ var config = {
     "refs": "./docs/pages/examples/refs/index",
     "validation": "./docs/pages/examples/validation/index",
   },
+  devtool: 'inline-source-map',
   output: {
     filename: "[name]/bundle.js",
     path: path.resolve(__dirname, "./docs/pages/examples/")

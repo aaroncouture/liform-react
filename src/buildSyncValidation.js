@@ -60,7 +60,8 @@ const buildSyncValidation = (schema, ajvParam = null) => {
     ajv = new Ajv({
       errorDataPath: "property",
       allErrors: true,
-      jsonPointers: false
+      jsonPointers: false,
+      $data: true,
     });
   }
   return values => {

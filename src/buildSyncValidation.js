@@ -1,4 +1,6 @@
 import Ajv from "ajv";
+import extendAjv from 'ajv-keywords';
+
 import merge from "deepmerge";
 import { set as _set } from "lodash";
 
@@ -63,6 +65,7 @@ const buildSyncValidation = (schema, ajvParam = null) => {
       jsonPointers: false,
       $data: true,
     });
+    extendAjv(ajv);
   }
   return values => {
     const valid = ajv.validate(schema, values);
